@@ -1,0 +1,14 @@
+node {
+    stage('SCM') {
+        // git clone 
+        git "https://github.com/asquarezone/game-of-life"
+    }
+    stage('build the package') {
+        // mvn package
+        sh 'mvn package'
+    }
+    stage('archival') {
+        // archiving artifacts
+        archiveArtifacts 'gameoflife-web/target/*.war'
+    }
+}
